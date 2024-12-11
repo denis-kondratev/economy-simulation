@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8492739557084684417}
   - component: {fileID: 5094581376731784763}
   m_Layer: 0
-  m_Name: Slogger
+  m_Name: Worker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

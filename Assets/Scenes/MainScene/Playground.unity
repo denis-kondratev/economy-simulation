@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f27c75fd7b48b4bee436722eaf3595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sloggerPrefab: {fileID: 5956063466369223676, guid: 786367e18d26941f5b7fd11341c5f00d, type: 3}
+  workerPrefab: {fileID: 5956063466369223676, guid: 786367e18d26941f5b7fd11341c5f00d, type: 3}
   gridSize:
     x: 6
     y: 6

@@ -1,12 +1,13 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace EconomySimulation.Playground
+namespace EconomySimulation
 {
     public struct PlaygroundConfig : IComponentData
     {
-        public Entity SloggerPrefab;
+        public Entity WorkerPrefab;
         public float2 GridSize;
         public float2 GridStep;
         public float2 GridCenter;
@@ -14,7 +15,7 @@ namespace EconomySimulation.Playground
     
     public class PlaygroundConfigAuthoring : MonoBehaviour
     {
-        public GameObject sloggerPrefab;
+        public GameObject workerPrefab;
         public float2 gridSize;
         public float2 gridStep;
         public float2 gridCenter;
@@ -27,7 +28,7 @@ namespace EconomySimulation.Playground
                 
                 AddComponent(entity, new PlaygroundConfig
                 {
-                    SloggerPrefab = GetEntity(authoring.sloggerPrefab, TransformUsageFlags.Dynamic),
+                    WorkerPrefab = GetEntity(authoring.workerPrefab, TransformUsageFlags.Dynamic),
                     GridSize = authoring.gridSize,
                     GridStep = authoring.gridStep,
                     GridCenter = authoring.gridCenter

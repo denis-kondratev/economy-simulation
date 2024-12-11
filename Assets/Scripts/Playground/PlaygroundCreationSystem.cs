@@ -2,23 +2,25 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
 
-namespace EconomySimulation.Playground
+namespace EconomySimulation
 {
+    [BurstCompile]
     public partial struct PlaygroundCreationSystem : ISystem
     {
-        [BurstCompile]
+        public void OnCreate(ref SystemState state)
+        {
+            state.RequireForUpdate<PlaygroundConfig>();
+        }
+        
         public void OnUpdate(ref SystemState state)
         {
-            if (SystemAPI.TryGetSingletonEntity<PlaygroundConfig>(out var configEntity))
-            {
-                var config = SystemAPI.GetComponent<PlaygroundConfig>(configEntity);
-                CreatePlayground(ref state, ref config);
-                state.EntityManager.DestroyEntity(configEntity);
-            }
+            CreatePlayground(ref state);
+            RemoveConfig(ref state);
         }
 
-        private void CreatePlayground(ref SystemState state, ref PlaygroundConfig config)
+        private void CreatePlayground(ref SystemState state)
         {
+            var config = SystemAPI.GetSingleton<PlaygroundConfig>();
             var min = config.GridCenter - config.GridSize / 2;
             var max = config.GridCenter + config.GridSize / 2;
 
@@ -26,10 +28,18 @@ namespace EconomySimulation.Playground
             {
                 for (var y = min.y; y <= max.y; y += config.GridStep.y)
                 {
-                    var slogger = state.EntityManager.Instantiate(config.SloggerPrefab);
-                    SystemAPI.SetComponent(slogger, LocalTransform.FromPosition(x, 0, y));
+                    var worker = state.EntityManager.Instantiate(config.WorkerPrefab);
+                    SystemAPI.SetComponent(worker, LocalTransform.FromPosition(x, 0, y));
+                    state.EntityManager.SetName(worker, $"Worker {x}:{y}");
                 }
             }
+        }
+
+        private void RemoveConfig(ref SystemState state)
+        {
+            var config = SystemAPI.GetSingleton<PlaygroundConfig>();
+            state.EntityManager.DestroyEntity(config.WorkerPrefab);
+            state.EntityManager.DestroyEntity(SystemAPI.GetSingletonEntity<PlaygroundConfig>());
         }
     }
 }
