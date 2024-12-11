@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 1574547231}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.66, z: 0}
+  m_LocalPosition: {x: 0, y: -1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,6 +273,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sloggerPrefab: {fileID: 5956063466369223676, guid: 786367e18d26941f5b7fd11341c5f00d, type: 3}
+  gridSize:
+    x: 6
+    y: 6
+  gridStep:
+    x: 2
+    y: 2
+  gridCenter:
+    x: 0
+    y: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
