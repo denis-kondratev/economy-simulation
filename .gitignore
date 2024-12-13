@@ -71,5 +71,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-#Rider
+# Rider
 mono_crash*.json
+
+# ML-Agents
+/ml-venv/
+/results/
+/Assets/ML-Agents/Timers/
+/Assets/ML-Agents/Timers.meta
