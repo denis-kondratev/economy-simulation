@@ -1,1 +1,1 @@
-# economy-simulation
+# Economics Simulation
